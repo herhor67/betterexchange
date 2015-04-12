@@ -36,15 +36,6 @@ command /wymiana [<player>]:
 		else:
 			send "&cMusicie być w tym samym świecie!"
 
-#========================================================================#
-#           debugowanie skryptu z 1 wersji           #
-#====================================================#
-command /debug:
-	trigger:
-		loop all players:
-			clear {wymieniam.sie.z.%loop-player%}
-			clear {item.%loop-player%}
-
 #====================================================#
 #             blokada pozbycia się itemów            #
 #====================================================#
@@ -54,8 +45,7 @@ on drop:
 		send "&6Nie możesz wyrzucać itemów podczas wymiany!"
 
 on rightclick:
-	#{wymieniam.sie.z.%player%} is set:
-	0 is 0:
+	{wymieniam.sie.z.%player%} is set:
 		clicked block is chest or furnace or ender chest or trapped chest or dispenser or dropper or jukebox or anvil or enchantment table or hopper or brewing stand:
 			set {_cancel} to true
 	{_cancel} is true:
