@@ -54,14 +54,15 @@ on drop:
 		send "&6Nie możesz wyrzucać itemów podczas wymiany!"
 
 on rightclick:
-  {wymieniam.sie.z.%player%} is set:
-    event-block is chest or furnace or ender chest or trapped chest or dispenser or dropper or jukebox or anvil or enchanting table or hopper or brewing stand:
-      set {_cancel} to true
-    event-entity is armor stand or horse or mule or donkey or minecart with chest or minecart with furnace or minecart with hopper:
-      set {_cancel} to true
-    {_cancel} is true:
-	  	cancel event
-	  	send "&6Nie możesz odkładać itemów do podczas wymiany!"
+	#{wymieniam.sie.z.%player%} is set:
+	0 is 0:
+		clicked block is chest or furnace or ender chest or trapped chest or dispenser or dropper or jukebox or anvil or enchantment table or hopper or brewing stand:
+			set {_cancel} to true
+	{_cancel} is true:
+		cancel event
+		wait 3 ticks
+		close player's inventory
+		send "&6Nie możesz odkładać itemów do podczas wymiany!"
 
 #====================================================#
 #      czyszczenie danych z wymiany po  wyjściu      #
